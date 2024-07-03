@@ -1,7 +1,7 @@
 const express = require("express");
 const core = require("cors");
 const app = express();
-const Port = process.env.PORT || 3000;
+const Port = process.env.PORT || 3002;
 const { Client } = require("pg");
 const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
@@ -16,7 +16,7 @@ const client = new Client({
   host: process.env.DBhost,
   user: process.env.DBuser,
   password: process.env.DBPass,
-  port: 44087,
+  port: process.env.DBport,
 });
 
 client
