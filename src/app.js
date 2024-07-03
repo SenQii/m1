@@ -34,8 +34,8 @@ app.get("/data", async (req, res) => {
       res.status(500).send("Error executing query");
     } else {
       console.log("res", resault.rows);
-      data = data.push(resault.rows);
-      res.status(200).json(resault.rows);
+      data = resault.rows;
+      res.status(200).json(data);
     }
   });
 });
