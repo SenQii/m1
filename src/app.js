@@ -1,6 +1,7 @@
 const express = require("express");
 const core = require("cors");
 const app = express();
+const Port = process.env.PORT || 3000;
 const { Client } = require("pg");
 const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
@@ -58,6 +59,6 @@ app.post("/data", async (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log(`Server is running at ${process.env.URL}`);
+app.listen(Port, () => {
+  console.log(`Server is running on port ${Port}`);
 });
