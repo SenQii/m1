@@ -59,6 +59,28 @@ app.post("/data", async (req, res) => {
   });
 });
 
+// save stt
+app.post("/stt", async (req, res) => {
+  const { transcript } = req.body;
+  const id = uuidv4();
+
+  console.log("transcript: ", transcript);
+
+  const query = `insert into stt (id, spokentext) values ('${id}', '${transcript}')`;
+
+  try {
+    client.query(query, (err, resault) => {
+      if (err) {
+        console.log("err in query", err);
+        res.status(500).send("Error executing query");
+      } else {
+        console.log("iserted: ", transcript);
+        res.status(200).json(resault.rows);
+      }
+    });
+  } catch (error) {}
+});
+
 app.listen(Port, () => {
   console.log(`Server is running on port ${Port}`);
 });
